@@ -55,7 +55,7 @@ def load_training_data(path: str) -> List[LabeledPoint]:
 def load_test_points(path: str) -> List[Point]:
     """
     Läser in 'testpoints.txt'.
-    Plockar ut alla par tal inom parentes, t.ex. '(25, 32)' även om före.
+    Plockar ut alla par tal inom parentes.
     """
     pts: List[Point] = []
     pat = re.compile(r"\(?\s*([+-]?\d+(?:\.\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?)\s*\)?")
@@ -232,7 +232,7 @@ def main() -> None:
     training_all = load_training_data("datapoints.txt")
     test_points = load_test_points("testpoints.txt")
 
-    # valfri snabb kontroll/debug
+    # snabb kontroll/debug
     print("\n[DEBUG] check (25, 32) med k=10")
     _ = knn_classify(Point(25, 32), training_all, k=10, debug=True)
 
@@ -245,13 +245,13 @@ def main() -> None:
         lbl = knn_classify(tp, training_all, k=1)
         print(f"Sample med (bredd, höjd): ({tp.w:.1f}, {tp.h:.1f}) klassad som {label_names[lbl]}")
 
-    # 4) Klassificera samma testpunkter med k=10 (krav uppgiftens del b)
+    # 4) Klassificera samma testpunkter med k=10 
     print("\n== 10-NN för givna testpunkter ==")
     for tp in test_points:
         lbl = knn_classify(tp, training_all, k=10)
         print(f"Sample med (bredd, höjd): ({tp.w:.1f}, {tp.h:.1f}) klassad som {label_names[lbl]}")
 
-    # 5) Användarinmatning + felhantering (frivilligt men bra för VG)
+    # 5) Användarinmatning + felhantering 
     up = read_user_point()
     if up:
         print("\n== Användarinmatning: klassificering för k=1..10 ==")
