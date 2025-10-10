@@ -2,7 +2,7 @@
 
 Detta repo inehåller lösningen till **Lab3 i programmering 
 
-##Programebeskrivning
+## Programebeskrivning
 Programmet ('lab3.py') läser in data från 'unlabelled_data.csv'.
 Det ritar en linje enligt formen 'y = kx + m' och klassificerar punkterna:
 - **label = 0** om punkten ligger under linjen
